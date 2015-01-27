@@ -12,22 +12,18 @@ typedef vector< vector<int> > triangle;
 
 void print(triangle& t, bool debug = false)
 {
-	if (debug)
-		std::cout << std::endl;
+	if (!debug)
+		return;
 
+	std::cout << std::endl;
 	for (int i = 0; i < t.size(); ++i)
 	{
 		for (int j = 0; j < t[i].size(); ++j)
-		{
-			if (debug)
-				std::cout << t[i][j] << " ";
-		}
-		if (debug)
-			std::cout << std::endl;
-	}
+			std::cout << t[i][j] << " ";
 
-	if (debug)
 		std::cout << std::endl;
+	}
+	std::cout << std::endl;
 }
 
 void load(triangle& t)
@@ -89,8 +85,9 @@ void calculate(triangle& t, bool debug = false)
 
 int max_path_sum(const triangle& t)
 {
-	int last_row = t.size() - 1;
-	return (last_row >= 0) ? *std::max_element(t[last_row].begin(), t[last_row].end()) : 0;
+	// The maximum path sum will be contained in the bottom row of the triangle
+	int bottom_row = t.size() - 1;
+	return (bottom_row >= 0) ? *std::max_element(t[bottom_row].begin(), t[bottom_row].end()) : 0;
 }
 
 
