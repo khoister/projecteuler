@@ -3,7 +3,7 @@
 #include <sstream>
 
 
-static const char* ones[] =
+static const char* small[] =
 {
 	"",
 	"one",
@@ -14,11 +14,7 @@ static const char* ones[] =
 	"six",
 	"seven",
 	"eight",
-	"nine"
-};
-
-static const char* teens[] =
-{
+	"nine",
 	"ten",
 	"eleven",
 	"twelve",
@@ -45,28 +41,21 @@ static const char* tens[] =
 	"ninety"
 };
 
-std::string tens_to_words(int n)
-{
-}
-
 std::string number_to_words(int n)
 {
 	std::string words;
 
-	if (n < 10)
-		return ones[n];
-
 	if (n < 20)
-		return teens[n-10];
+		return small[n];
 
 	if (n < 100)
 	{
 		std::stringstream ss;
-		int o = n % 10;
 		int t = n / 10;
+		int r = n % 10;
 		ss << tens[t];
-		if (o)
-			ss << ones[o];
+		if (r)
+			ss << small[r];
 		return ss.str();
 	}
 
@@ -76,7 +65,7 @@ std::string number_to_words(int n)
 		int h = n / 100;
 		int r = n % 100;
 
-		ss << ones[h] << "hundred";
+		ss << small[h] << "hundred";
 		if (r)
 			ss << "and" << number_to_words(r);
 		return ss.str();
@@ -88,7 +77,7 @@ std::string number_to_words(int n)
 		int th = n / 1000;
 		int r = n % 1000;
 
-		ss << ones[th] << "thousand";
+		ss << small[th] << "thousand";
 		if (r)
 			ss << number_to_words(r);
 		return ss.str();
