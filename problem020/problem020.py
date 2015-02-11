@@ -1,11 +1,11 @@
 def factorial(n):
-	t = 1
+	f = 1
 	for i in range(1,n+1):
-		t *= i
-	return t
+		f *= i
+	return f
 
-t = 0
+sum = 0
 s = str(factorial(100))
 for i in range(0, s.__len__()):
-	t += int(s[i])
-print t
+	sum += int(s[i])
+print sum
