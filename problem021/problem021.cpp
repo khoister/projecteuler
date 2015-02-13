@@ -6,11 +6,17 @@
 
 int proper_divisors_sum(int n)
 {
-	int t = 0;
-	int s = n >> 1;
-	for (int i = 1; i <= s; ++i)
+	int t = 1;
+	for (int i = 2; i*i <= n; ++i)
+	{
 		if (n % i == 0)
+		{
+			// The divisors are i and n/i.
+			// For example, take the number 28. 2 is a divisor and 28/2 = 14 is also a divisor.
 			t += i;
+			t += n/i;
+		}
+	}
 	return t;
 }
 
