@@ -20,8 +20,8 @@ int name_score(const std::string& name, int pos)
 {
 	int val = 0;
 	for (int i = 0; i < name.size(); ++i)
-		val += (name[i] - 'A' + 1) * pos;
-	return val;
+		val += (name[i] - 'A' + 1);
+	return (val * pos);
 }
 
 int main(int argc, char* argv[])
